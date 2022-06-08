@@ -18,7 +18,7 @@ namespace WebBigSchool.Controllers
         }
         // GET: Courses
         [Authorize]
-        [HttpPost]
+        [HttpGet]
         public ActionResult Create()
         {
             var viewModel = new CourseViewModel
@@ -27,6 +27,10 @@ namespace WebBigSchool.Controllers
             };
             return View(viewModel);
         }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel)
         {
             if (!ModelState.IsValid)

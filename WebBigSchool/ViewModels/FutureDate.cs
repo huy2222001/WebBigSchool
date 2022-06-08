@@ -16,8 +16,7 @@ namespace WebBigSchool.ViewModels
             "dd/M/yyyy",
             CultureInfo.CurrentCulture,
             DateTimeStyles.None,
-            out dateTime
-            );
+            out dateTime);
             return (isValid && dateTime > DateTime.Now);
         }
     }
