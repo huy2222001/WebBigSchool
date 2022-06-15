@@ -35,3 +35,25 @@ textarea {
 .navbar-collapse .navbar-nav > li > a {
     color: #000;
 }
+
+/*course*/
+.course {
+    list-style:none;
+}
+.course > li {
+    position:relative;
+    margin-bottom: 30px;
+}
+.course > li .date {
+    text-align:center;
+    background-image: linear-gradient(purple, pink);
+    color: white;
+    width: 60px;
+    border-radius: 8px;
+    margin-top:20px;
+}
+.course > li .details {
+    position:relative;
+    top:0;
+    left: 70px;
+}
