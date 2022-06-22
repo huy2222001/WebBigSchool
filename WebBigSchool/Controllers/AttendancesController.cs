@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebBigSchool.DTO;
 using WebBigSchool.Models;
 
 namespace WebBigSchool.Controllers
@@ -17,11 +18,14 @@ namespace WebBigSchool.Controllers
             _dbContext = new ApplicationDbContext();
         }
         [HttpPost]
-        public IHttpActionResult Attend([FromBody] int courseId)
+        public IHttpActionResult Attend(AttendanceDto attendanceDto)
         {
+            var userId = User.Identity.GetUserId();
+            if (_dbContext.Attendances.Any(a => a.AttendeeId == userId && a.CourseId == attendanceDto.CourseID))
+                return BadRequest("The Attendance already exitst!");
             var attendance = new Attendance
             {
-                CourseId = courseId,
+                CourseId = attendanceDto.CourseID,
                 AttendeeId = User.Identity.GetUserId()
             };
             _dbContext.Attendances.Add(attendance);
